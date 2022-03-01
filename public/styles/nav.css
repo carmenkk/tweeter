@@ -8,7 +8,17 @@ nav {
   color: #FFFFFF;/* text color */
 }
 
-span {
-  font-family: 'Bungee', cursive;/* tweeter logo */
+/* tweeter text */
+.logo {
+  font-family: 'Bungee', cursive;
   font-size: 42px;
+  
 } 
+
+/* write a new tweet */
+.text {
+  position: absolute;
+  right: 1.5em;
+  top: 1.5em;
+  
+}
