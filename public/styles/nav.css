@@ -1,0 +1,14 @@
+nav {
+  position: fixed;
+  top: 0;/* nav at the top of the page */
+  width: 100%;/* Full width */
+  height: 120px;
+  padding: 1.5em;
+  background-color: #4056A1;
+  color: #FFFFFF;/* text color */
+}
+
+span {
+  font-family: 'Bungee', cursive;/* tweeter logo */
+  font-size: 42px;
+} 
