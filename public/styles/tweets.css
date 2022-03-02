@@ -1,0 +1,84 @@
+section.all-tweets {
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+
+article.tweet {
+  width:90%;
+  border: thick solid;
+  padding: 1em;
+  margin: 1.5em 0em;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.tweet header {
+  height:100px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0;
+  background-color: inherit;
+}
+
+/* name */
+.tweet header span {
+  padding: 10px;
+}
+
+/* username */
+.tweet header span.handle {
+  margin-left: auto;
+  color:#9595bf;
+}
+
+/* tweet content */
+.tweet span {
+  padding: 10px;
+  overflow-wrap: break-word;
+  font-weight: 700;
+}
+
+
+.tweet footer {
+  border-style: none;
+  border-top-style: solid;
+  border-width: thick;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+/* tweet post date */
+ .tweet footer span {
+   font-size: 15px;
+ }
+
+ /* icons */
+ .tweet footer div.actions {
+   padding: 10px;
+   
+ }
+
+/* when hover over tweet, add box shadow */
+ .tweet:hover {
+  box-shadow: 5px 5px 0 #9595bf;
+}
+
+/* when hover over tweet, username changes color */
+.tweet:hover header span.handle {
+  color: #a9a8bf;
+}
+
+/* when hover over icon, icon changes color */
+ article.tweet footer div.actions i:hover {
+   color: #4056A1;
+ }
+ 
+
+
+
+
+
