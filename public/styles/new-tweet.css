@@ -3,7 +3,6 @@
   margin-top: 40px;
   display: flex;
   justify-content: center;
-
 }
 
 .new-tweet form {
@@ -16,7 +15,6 @@
 
 .new-tweet label {
   font-weight: 700;
-  color: #585858;
 }
 
 /* tweet text input */
@@ -24,13 +22,12 @@
   width: 100%;
   height: 45px;
   border: 0;
-  border-bottom:solid #585858;
+  border-bottom:solid #545149;
   border-width: thick;
   resize: none;
   outline: none;
   background-color: #f4f1ec;
   font-weight: 700;
-  color: #585858;
 }
 
 /* Tweet button */
@@ -43,8 +40,8 @@
 }
 
 /* Character counter */
-.counter {
+.counter #remainingChars {
   font-family: Bungee;
-  color: #585858;
   float: right;
 }
+
