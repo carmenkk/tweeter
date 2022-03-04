@@ -7,7 +7,7 @@
 $(document).ready(function() {
 
   /* add escape function for Preventing XSS */
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -46,54 +46,45 @@ $(document).ready(function() {
   /* loop through each tweet object and prepend each tweet to html "all-tweets"section */
   const renderTweets = function(tweets) {
     $("section.all-tweets").empty();
-    for(const tweet of tweets) {
+    for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $("section.all-tweets").prepend($tweet);
     }
-  }
+  };
   
- /* get data.json from "/tweets", and then render tweets */
+  /* get data.json from "/tweets", and then render tweets */
   const loadtweets = () => {
     $.ajax('/tweets',{
       method: 'GET',
       dataType: 'JSON',
     })
       .then(tweets => {
-        console.log("data", tweets);
-        renderTweets(tweets)});
-    };
+        renderTweets(tweets);
+      });
+  };
 
   /*  load initial tweets */
   loadtweets();
   
   /* click submit button, load new tweet */
-  $("form").on('submit', function(event){
+  $("form").on('submit', function(event) {
     event.preventDefault();
-    console.log('The form was submitted!')
-    
+  
     const tweetText = $(this).children('textarea').val().trim();
     $('.new-tweet p').hide();
-    //const $alertMessage = $(this).chidren('p');
+    
     if (!tweetText) {
-      $('.new-tweet p').text('--Please enter some words--')
-      $('.new-tweet p').slideDown()
+      $('.new-tweet p').text('--Please enter some words--');
+      $('.new-tweet p').slideDown();
     } else if (tweetText.length > 140) {
-      $('.new-tweet p').text("--Please enter no longer than 140 charaters--")
-      $('.new-tweet p').slideDown()
+      $('.new-tweet p').text("--Please enter no longer than 140 charaters--");
+      $('.new-tweet p').slideDown();
     } else if (tweetText) {
       const tweet = $(this).serialize();
       $.ajax("/tweets",{method: 'post',data: tweet})
         .then(loadtweets());
         
     }
- })
- 
-    
- 
-
-
-
-
-
+  });
 });
 
