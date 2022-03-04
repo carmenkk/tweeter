@@ -6,19 +6,31 @@
 
 $(document).ready(function() {
 
+  /* add escape function for Preventing XSS */
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+  /* take a new tweet object and return to a html article */
   const createTweetElement = (tweet) => {
+
+    //use timeago library to format date
     let time = timeago.format(tweet.created_at);
-    console.log(timeago);
+    
     let $tweet = $("<article>").addClass("tweet");
+
+    //tweet inner html
     const tweetHtml = `
       <header class ="user">
-        <img src = ${tweet.user.avatars}>
-        <span>${tweet.user.name}</span>
-        <span class="handle">${tweet.user.handle}</span>
+        <img src = ${escape(tweet.user.avatars)}>
+        <span>${escape(tweet.user.name)}</span>
+        <span class="handle">${escape(tweet.user.handle)}</span>
       </header>
-      <span class="content">${tweet.content.text}</span>
+      <span class="content">${escape(tweet.content.text)}</span>
       <footer>
-        <span>${time}</span>
+        <span>${escape(time)}</span>
         <div class="actions">
               <i class="fa-solid fa-flag"></i>
               <i class="fa-solid fa-retweet"></i>
@@ -31,32 +43,30 @@ $(document).ready(function() {
     return $tweet;
   };
 
-  const renderTweets = function(data) {
-    for(const tweet of data) {
+  /* loop through each tweet object and prepend each tweet to html "all-tweets"section */
+  const renderTweets = function(tweets) {
+    $("section.all-tweets").empty();
+    for(const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $("section.all-tweets").append($tweet);
+      $("section.all-tweets").prepend($tweet);
     }
   }
   
- 
-
+ /* get data.json from "/tweets", and then render tweets */
   const loadtweets = () => {
-    $.ajax({
-      url: '/tweets',
+    $.ajax('/tweets',{
       method: 'GET',
-      dataType: 'json',
-      success: (tweets) => {
+      dataType: 'JSON',
+    })
+      .then(tweets => {
         console.log("data", tweets);
-        renderTweets(tweets);
-      },
-      error: (err) => {
-        console.log(`error: ${err}`)
-      } 
-    });
-  };
+        renderTweets(tweets)});
+    };
 
+  /*  load initial tweets */
   loadtweets();
   
+  /* click submit button, load new tweet */
   $("form").on('submit', function(event){
     event.preventDefault();
     console.log('The form was submitted!')
@@ -68,10 +78,16 @@ $(document).ready(function() {
       alert("Your tweet is too long.Please enter no longer than 140 charaters.")
     } else if (tweetText) {
       const tweet = $(this).serialize();
-      $.ajax({ url: "/tweets", method: 'post',data: tweet})
+      $.ajax("/tweets",{method: 'post',data: tweet})
+        .then(loadtweets());
 
     }
  })
+ 
+    
+ 
+
+
 
 
 
