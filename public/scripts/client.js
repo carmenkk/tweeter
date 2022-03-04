@@ -71,5 +71,16 @@ const renderTweets = function(data) {
   
   renderTweets(data);
 
+ 
+  
+  $("form").on('submit', function(event){
+    event.preventDefault();
+    console.log('The form was submitted!')
+    const $data = $(this).serialize();
+    console.log(data);
+  
+    $.ajax({ url: "/tweets", method: 'post',data: $data})
+ })
+
 });
 
