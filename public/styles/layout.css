@@ -27,11 +27,32 @@ body {
  */
 
  main {
-  width: 100%;
+  
   display: flex;
   flex-direction: column;
   background-color: #f4f1ec;
  }
 
  
- 
+ /* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  /* user profile */
+  header  {
+    width: 30%;
+    margin: 2em;
+    float: left;
+    }
+
+  /* Main content container */
+  main {
+    width: 50%;
+    margin: 10vh 5% 0;
+    float: right;
+  }
+
+  /* Tweet form */ 
+  .new-tweet form {
+  margin-top: 1.5em;
+  }
+
+}
