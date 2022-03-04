@@ -16,3 +16,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Screenshot of tweeter page in laptop"](https://github.com/carmenkk/tweeter/blob/master/docs/desktop-layout.png)
+
+!["Screenshot of tweeter page in laptop"](https://github.com/carmenkk/tweeter/blob/master/docs/tablet-layout.png)
