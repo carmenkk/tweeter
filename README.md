@@ -19,6 +19,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
+- desktop 
 !["Screenshot of tweeter page in laptop"](https://github.com/carmenkk/tweeter/blob/master/docs/desktop-layout.png)
 
+- tablet
 !["Screenshot of tweeter page in laptop"](https://github.com/carmenkk/tweeter/blob/master/docs/tablet-layout.png)
