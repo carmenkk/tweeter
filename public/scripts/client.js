@@ -71,16 +71,20 @@ $(document).ready(function() {
     event.preventDefault();
     console.log('The form was submitted!')
     
-    const tweetText = $(this).children('textarea').val();
+    const tweetText = $(this).children('textarea').val().trim();
+    $('.new-tweet p').hide();
+    //const $alertMessage = $(this).chidren('p');
     if (!tweetText) {
-      alert("Please enter some words.")
+      $('.new-tweet p').text('--Please enter some words--')
+      $('.new-tweet p').slideDown()
     } else if (tweetText.length > 140) {
-      alert("Your tweet is too long.Please enter no longer than 140 charaters.")
+      $('.new-tweet p').text("--Please enter no longer than 140 charaters--")
+      $('.new-tweet p').slideDown()
     } else if (tweetText) {
       const tweet = $(this).serialize();
       $.ajax("/tweets",{method: 'post',data: tweet})
         .then(loadtweets());
-
+        
     }
  })
  
