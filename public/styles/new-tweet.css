@@ -2,9 +2,11 @@
   width: 100%;
   margin-top: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* new tweet form */
 .new-tweet form {
   width:90%;
   display: flex;
@@ -12,7 +14,7 @@
   justify-content: center;
 }
 
-
+/* tweet text question */
 .new-tweet label {
   font-weight: 700;
 }
@@ -20,7 +22,7 @@
 /* tweet text input */
 .new-tweet textarea {
   width: 100%;
-  height: 45px;
+  height: 3rem;
   border: 0;
   border-bottom:solid #545149;
   border-width: thick;
@@ -45,3 +47,8 @@
   float: right;
 }
 
+/* error message */
+.new-tweet p {
+  margin: 0.5em 0;
+  color: brown;
+}
